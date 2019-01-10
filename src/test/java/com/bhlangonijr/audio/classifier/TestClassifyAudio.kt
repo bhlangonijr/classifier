@@ -40,8 +40,11 @@ class TestClassifyAudio {
         val no5 = audioToFs(7, "src/test/resources/no5.wav", featureNames, -1.0)
         val no6 = audioToFs(7, "src/test/resources/no6.wav", featureNames, -1.0)
         val no7 = audioToFs(7, "src/test/resources/no7.wav", featureNames, -1.0)
-        val yes5 = audioToFs(7, "src/test/resources/yes5.wav", featureNames, -1.0)
-        val yes6 = audioToFs(7, "src/test/resources/yes6.wav", featureNames, -1.0)
+        val no8 = audioToFs(7, "src/test/resources/no8.wav", featureNames, -1.0)
+        val yes5 = audioToFs(8, "src/test/resources/yes5.wav", featureNames, -1.0)
+        val yes6 = audioToFs(9, "src/test/resources/yes6.wav", featureNames, -1.0)
+        val yes7 = audioToFs(10, "src/test/resources/yes7.wav", featureNames, -1.0)
+        val yes8 = audioToFs(10, "src/test/resources/yes8.wav", featureNames, -1.0)
 
         val stats = nb.train(data)
 
@@ -54,6 +57,9 @@ class TestClassifyAudio {
         val classification7 = nb.classify(yes6, stats)
         val classification8 = nb.classify(no6, stats)
         val classification9 = nb.classify(no7, stats)
+        val classification10 = nb.classify(yes7, stats)
+        val classification11 = nb.classify(no8, stats)
+        val classification12 = nb.classify(yes8, stats)
 
         println(classification1.predictions)
         println(classification1.predict())
@@ -76,6 +82,15 @@ class TestClassifyAudio {
         println(classification9.predictions)
         println(classification9.predict())
 
+        println(classification10.predictions)
+        println(classification10.predict())
+
+        println(classification11.predictions)
+        println(classification11.predict())
+
+        println(classification12.predictions)
+        println(classification12.predict())
+
         assertEquals(0.0, classification1.predict())
         assertEquals(1.0, classification2.predict())
         assertEquals(1.0, classification5.predict())
@@ -83,6 +98,10 @@ class TestClassifyAudio {
         assertEquals(0.0, classification7.predict())
         assertEquals(1.0, classification8.predict())
         assertEquals(1.0, classification9.predict())
+        assertEquals(0.0, classification10.predict())
+        assertEquals(1.0, classification11.predict())
+        assertEquals(0.0, classification12.predict())
+
 
     }
 
